@@ -4,74 +4,140 @@
 #include"20260707_Header2_yamaguchi.h"
 using namespace std;
 
-//
-int InputCheck(int min, int max)
+//入力関数
+void InputCheck(int Input[])
 {
-	int Input;
-	cout << "CPUとの対戦ゲームとして3つの数字を当てましょう。" << endl;
+
+	cout << "CPUとの対戦ゲームとして3つの数字を当てましょう\n";
 	while (true)
 	{
-		cin >> Input;
-		if (Input < min || max <Input)
+		for (int i = 0; i < NUMBER; i++)
 		{
-			cout << "入力に誤りがあります。再度入力してください。" << endl;
+			cout << i + 1 << "行目" << endl;
+			cin >> Input[i];
+		}
+		if (Input[0] == Input[1]||
+			Input[0] == Input[2] ||
+			Input[1] == Input[2])
+		{
+			cout << "同じ数字は２回入力できません" << endl;
+		}
+		else
+		{
+			break;
+		}
+
+	}
+}
+
+//CPU入力関数
+void CPUinput(int Number[])
+{
+	while (true)
+	{
+		for (int i = 0; i < NUMBER; i++)
+		{
+			Number[i] = rand() % MAX;
+		}
+		if (Number[0] == Number[1] ||
+			Number[0] == Number[2] ||
+			Number[1] == Number[2])
+		{
+
 		}
 		else
 		{
 			break;
 		}
 	}
-
-
-	return Input;
 }
-void P_Array()
-{
-	int P_ary[NUMBER];
-	for (int i = 0; i < 3; i++)
-	{
-		P_ary[i] = rand() % 10;
 
-		cout << P_ary[i];
+//基準数字関数
+void BaseNumbersFunction(int Number[])
+{
+	while (true)
+	{
+		for (int i= 0;i < NUMBER;i++)
+		{
+			Number[i] = rand() % MAX;
+		}
+		if (Number[0] == Number[1] ||
+			Number[0] == Number[2] || 
+			Number[1] == Number[2])
+		{
+
+		}
+		else
+		{
+			break;
+		}
 	}
 }
 
-void C_Array()
+//判定関数
+void Judg(int num[],int baseNumber[],bool &Delib)
 {
-	int C_ary[NUMBER];
-	for (int i = 0; i < 3; i++)
-	{
-		C_ary[i] = rand() % 10;
 
-		cout << C_ary[i];
+	int Hit = 0;
+	for (int i= 0;i < NUMBER;i++)
+	{
+		if (num[i] == baseNumber[i])
+		{
+			cout << num[i] << ":";
+			cout << "[Hit]" << endl;
+			Hit++;
+		}
+		else
+		{
+			cout << num[i] <<":";
+			cout <<  "[Miss]\n";
+		}
+
+		if (Hit == 3)
+		{
+			Delib = true;
+		}
 	}
+
+	
 }
+
+//ゲカン
 void Game()
 {
-	//変数
-	int playerChoice;
-	int playerC;
-	int CpuC;
-	int i;
 
+	//乱数初期化
+	srand((unsigned int)time(NULL));
+
+	int BaseNumber[NUMBER];
+	int player[NUMBER];
+	int cpu[NUMBER];
 	
-	
 
-	cout << "あなたの数字は以下の通りです。" << endl;
-	P_Array();
-	cout << "\n";
+	BaseNumbersFunction(BaseNumber);
 
-	for (int j = 0;j < NUMBER;j++)
+	while(true)
 	{
-		playerChoice = InputCheck(MIN,MAX);
+		bool Dekideration = false;
+		cout << "=========== PlayerTurn =================" << endl;
+		InputCheck(player);
 
+		Judg(player,BaseNumber,Dekideration);
+		
+		if (Dekideration  == true)
+		{
+			cout << "Player Win\n";
+			break;
+		}
+		cout << "============ CPU Turn =============================" << endl;
+		CPUinput(cpu);
+		Judg(cpu, BaseNumber,Dekideration);
+
+		if (Dekideration == true)
+		{
+			cout << "CPU Win";
+			break;
+		}
+		
 	}
-	cout << "CPUの数字は" << endl;
-	C_Array();
-
-	//if (playerChoice == )
-	{
-		cout << "Hit" << endl;
-	} 
-	
 }

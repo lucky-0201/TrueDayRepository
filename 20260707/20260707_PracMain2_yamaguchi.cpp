@@ -4,10 +4,9 @@
 #include"20260707_Header2_yamaguchi.h"
 using namespace std;
 
-int main()
+int main(void)
 {
-	//—”‰Šú‰»
-	srand((unsigned int)time(NULL));
+	
 
 	Game();
 	return 0;

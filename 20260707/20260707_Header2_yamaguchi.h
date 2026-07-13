@@ -1,7 +1,11 @@
 #pragma once
 //関数プロトタイプ宣言
-int InputCheck(int min, int max);
+void InputCheck(int Input[]);
 void Game();
+void CPUinput(int Number[]);
+void Judg(int num[], int baseNumber[], bool& a);
+void BaseNumbersFunction(int Number[]);
+
 //定数
 const int MAX = 9;
 const int MIN = 0;
