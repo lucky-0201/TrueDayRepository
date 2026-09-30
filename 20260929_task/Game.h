@@ -1,19 +1,17 @@
-#pragma once
+﻿#pragma once
 #include"Player.h"
 #include"CPU.h"
-
+#include"Judge.h"
 
 class Game
 {
-public:
-
-	Game();
-
-	void gameStart();
-
 
 private :
 	Player player;
 	CPU cpu;
+	Judge jug;
+
+public:
+	void gameStart();//ゲーム関数
 };
 

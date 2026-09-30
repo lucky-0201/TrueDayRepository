@@ -1,14 +1,14 @@
 #pragma once
-#include"Config.h"
+#include"Player.h"
+#include"CPU.h"
 
 class Judge
 {
 public:
-	Judge();
+	
 
 
-	void jugement();
-	void ResultShow();
+	void jugement(Player *player,CPU *cpu);
 
 };
 

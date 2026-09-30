@@ -1,8 +1,15 @@
 #pragma once
 
+//定数
 const int MIN_HAND = 0;
-const int MAX_HAND = 2;
+const int MAX_HAND = 3;
 
-const int G_HAND = 0;
-const int T_HAND = 1;
-const int P_HAND = 2;
+
+
+//列挙
+enum hnad
+{
+	gu,
+	tyoki,
+	pa
+};
