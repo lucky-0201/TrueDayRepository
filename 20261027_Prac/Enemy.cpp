@@ -5,12 +5,12 @@ using namespace std;
 
 Enemy::Enemy(int hp)
 {
-	this->hp = hp;
+	this->hp = hp ;
 }
 
 Enemy::~Enemy() {};
 
-void Enemy::ShowStatus()const
+void Enemy::ShowHP()const
 {
 	cout << "Enemy@HPF" << hp << endl;
 }

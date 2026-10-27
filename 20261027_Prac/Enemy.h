@@ -8,6 +8,6 @@ public:
 	Enemy(int hp);
 	~Enemy();
 
-	void ShowStatus() const;
+	void ShowHP() const;
 };
 

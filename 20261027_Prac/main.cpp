@@ -1,6 +1,9 @@
 #include<iostream>
 #include"Enemy.h"
 #include<vector>
+#include<ctime>
+#include<cstdlib>
+
 
 using namespace std;
 
@@ -12,20 +15,21 @@ int main(void)
 	/*enemy1.ShowStatus();
 	enemy2.ShowStatus();*/
 
+	srand((unsigned int)time(NULL));
+
 	vector<Enemy>enemys;
 
-	enemys.push_back(Enemy(100));
-	enemys.push_back(Enemy(200));
-	enemys.push_back(Enemy(250));
-	enemys.push_back(Enemy(400));
-	enemys.push_back(Enemy(1000));
-	enemys.push_back(Enemy(2000));
-
+	
+	
+	for (int i = 0;i < 3;i++)
+	{
+		enemys.push_back(Enemy(rand()%71 + 30));
+	}
 
 	//“o˜^‚µ‚½“à—e‚ðŒ©‚Ä‚Ý‚Ü‚µ‚å‚¤
 	for (const Enemy&enemy:enemys)
 	{
-		enemy.ShowStatus();
+		enemy.ShowHP();
 	}
 
 	cout << "“G‚Ì”‚ÍA" << enemys.size() << endl;
